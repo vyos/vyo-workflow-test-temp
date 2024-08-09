@@ -15,7 +15,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from unittest import TestCase
-import requests
 class TestVyOSUtils(TestCase):
     def test_key_mangling(self):
         from vyos.utils.dict import mangle_dict_keys
