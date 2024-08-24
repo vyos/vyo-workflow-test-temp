@@ -38,4 +38,4 @@ jobs:
           src: "."
           version: "~=2.1.1"
           lint: "flake8,pylint==2.13.1"
-          revision: "${{ steps.get-base-commit.outputs.base_commit }}...${{ steps.get-head-commit.outputs.head_commit }}"
+          revision: "current..."
