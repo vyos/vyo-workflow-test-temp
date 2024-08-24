@@ -16,7 +16,8 @@ jobs:
       - uses: actions/setup-python@v5
       - uses: akaihola/darker@v2.1.1
         with:
-          options: "--check --diff --isort --color --revision current"
+          options: "--check --diff --isort --color"
           src: "."
           version: "~=2.1.1"
           lint: "flake8,pylint==2.13.1"
+          revision: "current"
