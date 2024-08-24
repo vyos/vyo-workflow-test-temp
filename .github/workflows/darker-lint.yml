@@ -15,27 +15,35 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v5
 
-      - name: Get head commit ID
-        id: get-head-commit
+      - name: darker install
         run: |
-          HEAD_COMMIT=$(jq -r .pull_request.head.sha "$GITHUB_EVENT_PATH")
-          echo "head_commit=$HEAD_COMMIT" >> "$GITHUB_OUTPUT"
-
-      - name: Get base commit ID
-        id: get-base-commit
+          pip install --upgrade darker~=2.1.1
+          
+      - name: analyze
         run: |
-          BASE_COMMIT=$(jq -r .pull_request.base.sha "$GITHUB_EVENT_PATH")
-          echo "base_commit=$BASE_COMMIT" >> "$GITHUB_OUTPUT"
+          darker --revision current .
 
-      - name: Use commit IDs
-        run: |
-          echo "Head commit ID: ${{ steps.get-head-commit.outputs.head_commit }}"
-          echo "Base commit ID: ${{ steps.get-base-commit.outputs.base_commit }}"
+      # - name: Get head commit ID
+      #   id: get-head-commit
+      #   run: |
+      #     HEAD_COMMIT=$(jq -r .pull_request.head.sha "$GITHUB_EVENT_PATH")
+      #     echo "head_commit=$HEAD_COMMIT" >> "$GITHUB_OUTPUT"
 
-      - uses: akaihola/darker@v2.1.1
-        with:
-          options: "--check --diff --isort --color"
-          src: "."
-          version: "~=2.1.1"
-          lint: "flake8,pylint==2.13.1"
-          revision: "current..."
+      # - name: Get base commit ID
+      #   id: get-base-commit
+      #   run: |
+      #     BASE_COMMIT=$(jq -r .pull_request.base.sha "$GITHUB_EVENT_PATH")
+      #     echo "base_commit=$BASE_COMMIT" >> "$GITHUB_OUTPUT"
+
+      # - name: Use commit IDs
+      #   run: |
+      #     echo "Head commit ID: ${{ steps.get-head-commit.outputs.head_commit }}"
+      #     echo "Base commit ID: ${{ steps.get-base-commit.outputs.base_commit }}"
+
+      # - uses: akaihola/darker@v2.1.1
+      #   with:
+      #     options: "--check --diff --isort --color"
+      #     src: "."
+      #     version: "~=2.1.1"
+      #     lint: "flake8,pylint==2.13.1"
+      #     revision: "current..."
