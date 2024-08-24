@@ -18,10 +18,10 @@ jobs:
       - name: darker install
         run: |
           pip install --upgrade darker~=2.1.1
-          
+
       - name: analyze
         run: |
-          darker --revision current .
+          darker -r :PRE-COMMIT: .
 
       # - name: Get head commit ID
       #   id: get-head-commit
