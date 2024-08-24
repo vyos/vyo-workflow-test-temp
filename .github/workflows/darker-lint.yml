@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
       - uses: actions/setup-python@v5
 
       - name: darker install
@@ -21,7 +22,7 @@ jobs:
 
       - name: analyze
         run: |
-          darker -r :PRE-COMMIT: .
+          darker -r current .
 
       # - name: Get head commit ID
       #   id: get-head-commit
