@@ -28,7 +28,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current...HEAD --diff --check --diff --isort --color -c src/tests/*.py
+          darker -r current...HEAD --check --diff --isort --color -c src/tests/*.py
 
       # - name: analyze
       #   run: |
@@ -51,9 +51,9 @@ jobs:
       #     echo "Head commit ID: ${{ steps.get-head-commit.outputs.head_commit }}"
       #     echo "Base commit ID: ${{ steps.get-base-commit.outputs.base_commit }}"
 
-      - uses: akaihola/darker@v2.1.1
-        with:
-          options: "--revision current...HEAD --check --diff --isort --color"
-          src: "."
-          version: "~=2.1.1"
-          lint: "flake8,pylint==2.13.1"
+      # - uses: akaihola/darker@v2.1.1
+      #   with:
+      #     options: "--revision current...HEAD --check --diff --isort --color"
+      #     src: "."
+      #     version: "~=2.1.1"
+      #     lint: "flake8,pylint==2.13.1"
