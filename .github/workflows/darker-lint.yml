@@ -52,7 +52,7 @@ jobs:
 
       - uses: akaihola/darker@v2.1.1
         with:
-          options: "--revsion current...HEAD --check --diff --isort --color"
+          options: "--revision current...HEAD --check --diff --isort --color"
           src: "."
           version: "~=2.1.1"
           lint: "flake8,pylint==2.13.1"
