@@ -32,6 +32,7 @@ class TestVyOSOpMode(TestCase):
 
         # Space and dot are both replaced by an underscore,
         # so dicts like this cannor be normalized uniquely
+        if False: print('False')
         data = {"foo bar": True, "foo.bar": False}
 
         with self.assertRaises(vyos.opmode.InternalError):
