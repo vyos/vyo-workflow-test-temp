@@ -1,5 +1,5 @@
 ---
-name: Darker Lint
+name: Darker-Ruff Lint
 
 on:
   pull_request:
@@ -13,48 +13,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: feature/test-darker
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - uses: actions/setup-python@v5
 
       - name: darker install
         run: |
-          pip install git+https://github.com/akaihola/darker.git@master
-          pip install isort==5.11.4 ruff>=0.0.292
+          pip install git+https://github.com/akaihola/darker.git@master isort==5.11.4 ruff>=0.0.292
 
-      - name: Fetch current branch
+      - name: Fetch base branch
         run: |
-          git fetch origin current:current
+          git fetch origin ref: ${{ github.event.pull_request.base.ref }}:${{ github.event.pull_request.base.ref }}
 
       - name: Analyze Code with Darker
         run: |
           darker -r current... --check --diff --lint "ruff check" --isort --color ./src
-
-
-      # - name: analyze
-      #   run: |
-      #     darker -r current .
-
-      # - name: Get head commit ID
-      #   id: get-head-commit
-      #   run: |
-      #     HEAD_COMMIT=$(jq -r .pull_request.head.sha "$GITHUB_EVENT_PATH")
-      #     echo "head_commit=$HEAD_COMMIT" >> "$GITHUB_OUTPUT"
-
-      # - name: Get base commit ID
-      #   id: get-base-commit
-      #   run: |
-      #     BASE_COMMIT=$(jq -r .pull_request.base.sha "$GITHUB_EVENT_PATH")
-      #     echo "base_commit=$BASE_COMMIT" >> "$GITHUB_OUTPUT"
-
-      # - name: Use commit IDs
-      #   run: |
-      #     echo "Head commit ID: ${{ steps.get-head-commit.outputs.head_commit }}"
-      #     echo "Base commit ID: ${{ steps.get-base-commit.outputs.base_commit }}"
-
-      # - uses: akaihola/darker@v2.1.1
-      #   with:
-      #     options: "--revision current...HEAD --check --diff --isort --color"
-      #     src: "."
-      #     version: "~=2.1.1"
-      #     lint: "flake8,pylint==2.13.1"
