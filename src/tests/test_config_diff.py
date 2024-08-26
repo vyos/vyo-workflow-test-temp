@@ -17,7 +17,6 @@
 import vyos.configtree
 
 from unittest import TestCase
-import json
 
 class TestConfigDiff(TestCase):
     def setUp(self):
