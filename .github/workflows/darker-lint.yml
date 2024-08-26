@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          fetch-tags: true
           ref: feature/test-darker
+
       - uses: actions/setup-python@v5
 
       - name: darker install
@@ -28,7 +28,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current...HEAD --check --diff --lint "pylint --errors-only" --color .
+          darker -r current... --check --diff --lint "pylint --errors-only" --color ./src
 
 
       # - name: analyze
