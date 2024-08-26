@@ -17,9 +17,9 @@ jobs:
           ref: feature/test-darker
       - uses: actions/setup-python@v5
 
-      # - name: darker install
-      #   run: |
-      #     pip install --upgrade darker~=2.1.1
+      - name: darker install
+        run: |
+          pip install --upgrade darker~=2.1.1
 
       - name: Fetch current branch
         run: |
