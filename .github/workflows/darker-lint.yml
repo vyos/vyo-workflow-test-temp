@@ -28,7 +28,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current...HEAD --check --diff --lint "pylint --errors-only" --color -c src/tests/*.py
+          darker -r current...HEAD --check --diff --lint "pylint --errors-only" --color .
 
 
       # - name: analyze
