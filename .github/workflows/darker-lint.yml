@@ -12,7 +12,6 @@ permissions:
   
 env:
   base_ref: ${{ github.event.pull_request.base.ref }}
-  head_ref: ${{ github.event.pull_request.head.ref }}
 
 jobs:
   darker-lint:
@@ -38,4 +37,4 @@ jobs:
 
       - name: Analyze Code
         run: |
-          darker -r ${base_ref}...${head_ref} --check --diff --lint "ruff check" --isort --color ./src
+          darker -r ${base_ref}...HEAD --check --diff --lint "ruff check" --isort --color ./src
