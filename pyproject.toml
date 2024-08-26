@@ -1,4 +1,0 @@
-[tool.darker]
-src = ["."]
-line-length = 88
-skip-string-normalization = true
