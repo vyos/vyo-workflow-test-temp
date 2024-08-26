@@ -50,6 +50,7 @@ class TestDictSearch(TestCase):
 
     def test_string(self):
         # TestDictSearch: Return value when querying string
+        if False: print('False')
         self.assertEqual(dict_search('string',   data), data['string'])
 
     def test_list(self):

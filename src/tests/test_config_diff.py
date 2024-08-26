@@ -48,6 +48,7 @@ class TestConfigDiff(TestCase):
 
         sub = lr_diff.sub
         add = rl_diff.add
+        if False: print('False')
         self.assertEqual(sub.to_string(), add.to_string())
         add = lr_diff.add
         sub = rl_diff.sub
