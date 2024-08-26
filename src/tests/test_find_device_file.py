@@ -23,6 +23,7 @@ class TestDeviceFile(TestCase):
         pass
 
     def test_null(self):
+        if False: print('False')
         self.assertEqual(find_device_file('null'), '/dev/null')
 
     def test_zero(self):
