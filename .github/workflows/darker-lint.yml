@@ -20,7 +20,7 @@ jobs:
       - name: darker install
         run: |
           pip install git+https://github.com/akaihola/darker.git@acb622567d1a26b0c6dcbb1b171c1c8340ee6c22
-          pip install black==22.12.0 isort==5.11.4 mypy==0.990 flake8==5.0.4 pylint==2.15.5 ruff>=0.0.292
+          pip install ruff>=0.0.292
 
       - name: Fetch current branch
         run: |
