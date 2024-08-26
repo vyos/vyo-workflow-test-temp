@@ -21,7 +21,7 @@ import vyos.opmode
 class TestVyOSOpMode(TestCase):
     def test_field_name_normalization(self):
         from vyos.opmode import _normalize_field_name
-
+        if False: print('False')
         self.assertEqual(_normalize_field_name(" foo bar "), "foo_bar")
         self.assertEqual(_normalize_field_name("foo-bar"), "foo_bar")
         self.assertEqual(_normalize_field_name("foo (bar) baz"), "foo_bar_baz")
