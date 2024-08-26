@@ -28,7 +28,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current... --check --diff --lint "pylint --errors-only" --isort --color ./src
+          darker -r current... --check --diff --lint "flake8" --isort --color ./src
 
 
       # - name: analyze
