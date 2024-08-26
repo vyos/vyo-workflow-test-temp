@@ -25,9 +25,9 @@ jobs:
         run: |
           git fetch origin current:current
 
-      # - name: Analyze Code with Darker
-      #   run: |
-      #     darker -r current...HEAD --diff --check .
+      - name: Analyze Code with Darker
+        run: |
+          darker -r current...HEAD --diff --check --diff --isort --color -c .
 
       # - name: analyze
       #   run: |
