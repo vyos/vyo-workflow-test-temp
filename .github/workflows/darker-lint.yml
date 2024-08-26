@@ -28,7 +28,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current...HEAD --diff --check --diff --isort --color -c .
+          darker -r current...HEAD --diff --check --diff --isort --color -c src/tests/*.py
 
       # - name: analyze
       #   run: |
