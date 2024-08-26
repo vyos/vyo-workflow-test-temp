@@ -29,7 +29,7 @@ jobs:
 
       - name: darker install
         run: |
-          pip install git+https://github.com/akaihola/darker.git@master isort==5.11.4 ruff>=0.0.292
+          pip install git+https://github.com/akaihola/darker.git@master ruff>=0.0.292
 
       - name: Fetch base branch
         run: |
@@ -37,4 +37,4 @@ jobs:
 
       - name: Analyze Code
         run: |
-          darker -r ${base_ref} --check --diff --lint "ruff check" --isort --color ./src
+          darker -r ${base_ref} --check --diff --lint "ruff check" --color ./src
