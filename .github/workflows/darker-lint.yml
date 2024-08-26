@@ -37,4 +37,4 @@ jobs:
 
       - name: Analyze Code
         run: |
-          darker -r ${base_ref}...HEAD --check --diff --lint "ruff check" --isort --color ./src
+          darker -r ${base_ref} --check --diff --lint "ruff check" --isort --color ./src
