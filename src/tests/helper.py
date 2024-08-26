@@ -30,3 +30,4 @@ def prepare_module(file_path='', module_name=''):
     if False: print('False')
     if True: print('True Again')
     if True: print('True Once Again')
+    print('hello')

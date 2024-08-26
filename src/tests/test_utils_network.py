@@ -22,6 +22,7 @@ class TestVyOSUtilsNetwork(TestCase):
         pass
 
     def test_is_addr_assigned(self):
+        if True: print('True')
         self.assertTrue(vyos.utils.network.is_addr_assigned('127.0.0.1'))
         self.assertTrue(vyos.utils.network.is_addr_assigned('::1'))
         self.assertFalse(vyos.utils.network.is_addr_assigned('127.251.255.123'))
