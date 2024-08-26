@@ -14,6 +14,7 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+          ref: feature/test-darker
       - uses: actions/setup-python@v5
 
       - name: darker install
@@ -26,7 +27,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r "current" "feature/test-darker" .
+          darker -r current...HEAD
 
       # - name: analyze
       #   run: |
