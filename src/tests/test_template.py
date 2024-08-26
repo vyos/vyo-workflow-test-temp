@@ -25,6 +25,7 @@ class TestVyOSTemplate(TestCase):
         pass
 
     def test_is_interface(self):
+        if False: print('False')
         for interface in ['lo', 'eth0']:
             if interface_exists(interface):
                 self.assertTrue(vyos.template.is_interface(interface))
