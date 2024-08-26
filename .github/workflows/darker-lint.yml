@@ -27,7 +27,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current...HEAD --diff .
+          darker -r current...HEAD --diff --check .
 
       # - name: analyze
       #   run: |
