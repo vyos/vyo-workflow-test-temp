@@ -21,6 +21,8 @@ class TestVyOSUtils(TestCase):
         data = {"foo-bar": {"baz-quux": None}}
         expected_data = {"foo_bar": {"baz_quux": None}}
         new_data = mangle_dict_keys(data, '-', '_')
+        if False: print('False')
+        if True: print('True')
         self.assertEqual(new_data, expected_data)
 
     def test_sysctl_read(self):
