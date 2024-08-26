@@ -20,7 +20,7 @@ jobs:
       - name: darker install
         run: |
           pip install git+https://github.com/akaihola/darker.git@master
-          pip install ruff>=0.0.292
+          pip install isort==5.11.4 ruff>=0.0.292
 
       - name: Fetch current branch
         run: |
