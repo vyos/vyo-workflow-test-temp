@@ -20,9 +20,17 @@ jobs:
         run: |
           pip install --upgrade darker~=2.1.1
 
-      - name: analyze
+      - name: Fetch current branch
         run: |
-          darker -r current .
+          git fetch origin current:current
+
+      - name: Analyze Code with Darker
+        run: |
+          darker -r current HEAD .
+
+      # - name: analyze
+      #   run: |
+      #     darker -r current .
 
       # - name: Get head commit ID
       #   id: get-head-commit
