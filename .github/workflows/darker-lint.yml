@@ -26,7 +26,7 @@ jobs:
 
       - name: Analyze Code with Darker
         run: |
-          darker -r current HEAD .
+          darker -r "current" "feature/test-darker" .
 
       # - name: analyze
       #   run: |
