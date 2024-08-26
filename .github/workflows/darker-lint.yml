@@ -17,17 +17,17 @@ jobs:
           ref: feature/test-darker
       - uses: actions/setup-python@v5
 
-      - name: darker install
-        run: |
-          pip install --upgrade darker~=2.1.1
+      # - name: darker install
+      #   run: |
+      #     pip install --upgrade darker~=2.1.1
 
       - name: Fetch current branch
         run: |
           git fetch origin current:current
 
-      - name: Analyze Code with Darker
-        run: |
-          darker -r current...HEAD --diff --check --lint .
+      # - name: Analyze Code with Darker
+      #   run: |
+      #     darker -r current...HEAD --diff --check .
 
       # - name: analyze
       #   run: |
@@ -50,10 +50,10 @@ jobs:
       #     echo "Head commit ID: ${{ steps.get-head-commit.outputs.head_commit }}"
       #     echo "Base commit ID: ${{ steps.get-base-commit.outputs.base_commit }}"
 
-      # - uses: akaihola/darker@v2.1.1
-      #   with:
-      #     options: "--check --diff --isort --color"
-      #     src: "."
-      #     version: "~=2.1.1"
-      #     lint: "flake8,pylint==2.13.1"
-      #     revision: "current..."
+      - uses: akaihola/darker@v2.1.1
+        with:
+          options: "--check --diff --isort --color"
+          src: "."
+          version: "~=2.1.1"
+          lint: "flake8,pylint==2.13.1"
+          revision: "current...HEAD"
