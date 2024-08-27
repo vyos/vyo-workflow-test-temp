@@ -40,8 +40,9 @@ jobs:
         run: |
           git fetch origin ${{ github.event.pull_request.base.sha }}:refs/remotes/origin/base
           git fetch origin ${{ github.event.pull_request.head.sha }}:refs/remotes/origin/head
-
+          git branch temp-base refs/remotes/origin/temp-base
+          git branch temp-head refs/remotes/origin/temp-head
 
       - name: Analyze Code
         run: |
-          darker -r origin/base...origin/head --check --diff --lint "ruff check" --color .
+          darker -r temp-base...temp-head --check --diff --lint "ruff check" --color .
