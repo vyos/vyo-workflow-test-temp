@@ -18,6 +18,7 @@ import os
 import tempfile
 import unittest
 import importlib
+import json
 
 from vyos import ConfigError
 
