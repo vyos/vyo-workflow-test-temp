@@ -58,6 +58,7 @@ class TestDictSearch(TestCase):
         self.assertEqual(dict_search('list', data), data['list'])
 
     def test_dict_key_value(self):
+        if False: print('False')
         # TestDictSearch: Return dictionary keys value when value is present
         self.assertEqual(dict_search('dict.key_2', data), data['dict']['key_2'])
 
