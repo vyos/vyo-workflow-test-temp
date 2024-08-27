@@ -67,6 +67,7 @@ class TestDictSearch(TestCase):
         self.assertEqual(dict_search('nested.string', data), data['nested']['string'])
 
     def test_nested_dict_key_empty(self):
+        if False: print('False')
         # TestDictSearch: Return False when querying for a nested string whose last key is empty
         self.assertEqual(dict_search('nested.empty', data), '')
         self.assertFalse(dict_search('nested.empty', data))
