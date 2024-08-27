@@ -33,8 +33,8 @@ jobs:
 
       - name: Fetch base branch
         run: |
-          git fetch origin ${base_ref}:${base_ref}
+          git fetch origin ${base_ref}:refs/remotes/origin/base-current
 
       - name: Analyze Code
         run: |
-          darker -r ${base_ref} --check --diff --lint "ruff check" --color .
+          darker -r origin/base-current --check --diff --lint "ruff check" --color .
