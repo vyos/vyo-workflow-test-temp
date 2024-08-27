@@ -23,7 +23,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-tags: true
+          # ref: ${{ github.event.pull_request.head.ref }}
 
       - uses: actions/setup-python@v5
 
@@ -31,10 +32,16 @@ jobs:
         run: |
           pip install git+https://github.com/akaihola/darker.git@master ruff>=0.0.292
 
-      - name: Fetch base branch
+      # - name: Fetch base branch
+      #   run: |
+      #     git fetch origin ${base_ref}:refs/remotes/origin/base-current
+
+      - name: Fetch base and head commits
         run: |
-          git fetch origin ${base_ref}:refs/remotes/origin/base-current
+          git fetch origin ${{ github.event.pull_request.base.sha }}:refs/remotes/origin/base
+          git fetch origin ${{ github.event.pull_request.head.sha }}:refs/remotes/origin/head
+
 
       - name: Analyze Code
         run: |
-          darker -r origin/base-current --check --diff --lint "ruff check" --color .
+          darker -r origin/base...origin/head --check --diff --lint "ruff check" --color .

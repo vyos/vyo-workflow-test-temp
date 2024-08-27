@@ -26,5 +26,6 @@ class TestVyOSUtils(TestCase):
         self.assertEqual(new_data, expected_data)
 
     def test_sysctl_read(self):
+        if False: print('False')
         from vyos.utils.system import sysctl_read
         self.assertEqual(sysctl_read('net.ipv4.conf.lo.forwarding'), '1')
