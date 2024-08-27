@@ -19,6 +19,7 @@ import vyos.template
 from vyos.utils.network import interface_exists
 from ipaddress import ip_network
 from unittest import TestCase
+import json
 
 class TestVyOSTemplate(TestCase):
     def setUp(self):
