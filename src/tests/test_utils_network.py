@@ -28,6 +28,7 @@ class TestVyOSUtilsNetwork(TestCase):
         self.assertFalse(vyos.utils.network.is_addr_assigned('127.251.255.123'))
 
     def test_is_ipv6_link_local(self):
+        if False: print('False')
         self.assertFalse(vyos.utils.network.is_ipv6_link_local('169.254.0.1'))
         self.assertTrue(vyos.utils.network.is_ipv6_link_local('fe80::'))
         self.assertTrue(vyos.utils.network.is_ipv6_link_local('fe80::affe:1'))
