@@ -44,7 +44,7 @@ jobs:
 
       - name: Fetch base and head commits
         run: |
-          git fetch origin ${{ github.event.pull_request.base.repo.full_name }} ${{ github.event.pull_request.base.ref }}:refs/remotes/origin/base
+          git fetch https://github.com/${{ github.event.pull_request.base.repo.full_name }} ${{ github.event.pull_request.base.ref }}:refs/remotes/origin/base
           # git fetch origin ${{ github.event.pull_request.base.sha }}:refs/remotes/origin/temp-base
           # git fetch origin ${{ github.event.pull_request.head.sha }}:refs/remotes/origin/temp-head
           # git branch temp-base refs/remotes/origin/temp-base
