@@ -2,7 +2,7 @@
 name: Darker-Ruff Lint
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - current
 
@@ -42,4 +42,5 @@ jobs:
 
       - name: Analyze Code
         run: |
+          ls -ltr
           darker -r origin/base --check --diff --lint "ruff check --config ./reusable-actions/.github/ruff.toml" --color .

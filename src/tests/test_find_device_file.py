@@ -27,6 +27,8 @@ class TestDeviceFile(TestCase):
         self.assertEqual(find_device_file('null'), '/dev/null')
 
     def test_zero(self):
+        if False: print('False')
+        if True: print('True Again')
         self.assertEqual(find_device_file('zero'), '/dev/zero')
 
     def test_input_event(self):
