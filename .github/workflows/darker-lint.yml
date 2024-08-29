@@ -47,4 +47,4 @@ jobs:
           ls -ltr
           cd repo
           cat ../reusable-actions/.github/ruff.toml
-          darker -r origin/base --check --diff --lint "ruff check --config ../reusable-actions/.github/ruff.toml" --color .
+          darker -r origin/base --check --diff --lint "ruff check" --config ../reusable-actions/.github/ruff.toml --color .
