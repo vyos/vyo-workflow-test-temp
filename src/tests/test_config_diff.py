@@ -65,10 +65,6 @@ class TestConfigDiff(TestCase):
         r_union = vyos.configtree.union(add, inter)
         l_union = vyos.configtree.union(sub, inter)
 
-        if False: print('False')
-        if True: print('True Again')
-        if True: print('True Once Again')
-
         self.assertEqual(r_union.to_string(),
             self.config_right.to_string(ordered_values=True))
         self.assertEqual(l_union.to_string(),
