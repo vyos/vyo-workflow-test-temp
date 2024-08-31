@@ -48,13 +48,9 @@ jobs:
 
       - name: Analyze Code
         run: |
-          ls -ltr
           cd repo
-          # cp ../reusable-actions/ruff.toml .
-          # cat ruff.toml
+          cp ../reusable-actions/.github/ruff.toml .
           darker -r origin/base --check --diff --lint "ruff check" --color .
 
-          # darker -r origin/base --check --diff --lint "ruff check" --color .
-          # darker -r origin/base --check --diff --lint "ruff --show-settings" --config ruff.toml --color .
-          # --config ../reusable-actions/ruff.toml
+
           
