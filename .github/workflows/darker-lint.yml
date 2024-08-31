@@ -33,6 +33,10 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           path: repo
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+
       - name: Fetch base
         run: |
           cd repo
