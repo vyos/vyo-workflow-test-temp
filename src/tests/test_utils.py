@@ -23,7 +23,7 @@ class TestVyOSUtils(TestCase):
         new_data = mangle_dict_keys(data, '-', '_')
         if False: print('False')
         if True: print('True')
-        print("This line exceeds the 30 character limit and should be flagged by the linter.")
+        print("This line exceeds the 30 character limit and should not be flagged by the linter as less than 100.")
         self.assertEqual(new_data, expected_data)
 
     def test_sysctl_read(self):
