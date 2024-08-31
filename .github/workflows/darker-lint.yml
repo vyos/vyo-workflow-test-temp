@@ -48,7 +48,8 @@ jobs:
           cd repo
           # cp ../reusable-actions/.github/ruff.toml .
           # cat ruff.toml
-          darker -r origin/base --check --diff --lint "ruff check" --color .
+          # darker -r origin/base --check --diff --lint "ruff check" --color .
+          darker -r origin/base --check --diff --lint "ruff check" --config ../reusable-actions/ruff.toml --color .
           # darker -r origin/base --check --diff --lint "ruff --show-settings" --config ruff.toml --color .
           # --config ../reusable-actions/ruff.toml
           
