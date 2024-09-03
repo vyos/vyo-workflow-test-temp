@@ -50,6 +50,6 @@ jobs:
       - name: Analyze Code
         run: |
           cd repo
-          cp origin/base/ruff.toml .
+          git checkout origin/base -- ruff.toml
           cat ruff.toml
           darker -r origin/base --check --diff --lint "ruff check" --color .
