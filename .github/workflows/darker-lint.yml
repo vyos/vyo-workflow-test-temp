@@ -53,6 +53,7 @@ jobs:
           if git ls-tree -r origin/base --name-only | grep -q '^ruff.toml$'; then
             git checkout origin/base -- ruff.toml
             echo "Using ruff.toml from base repo"
+            cat ruff.toml
           else
             echo "No ruff.toml found in base repo"
           fi
