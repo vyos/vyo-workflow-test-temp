@@ -1,5 +1,5 @@
 ---
-name: Darker-Ruff Lint
+name: Ruff Lint 2
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  darker-ruff-lint:
+  ruff-lint-2:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -43,18 +43,14 @@ jobs:
         with:
           python-version: '3.11' 
 
-      - name: Install darker ruff 
-        run: |
-          pip install git+https://github.com/akaihola/darker.git@master ruff>=0.0.292
-
-      - name: Analyze Code
+      - name: Get changed files
+        id: changed-files
         run: |
           cd repo
-          if git ls-tree -r origin/base --name-only | grep -q '^ruff.toml$'; then
-            git checkout origin/base -- ruff.toml
-            echo "Using ruff.toml from base repo"
-            cat ruff.toml
-          else
-            echo "No ruff.toml found in base repo"
-          fi
-          darker -r origin/base --check --diff --lint "ruff check" --color .
+          git diff --name-only origin/base...${{ github.event.pull_request.head.ref }} > changed_files.txt
+
+      - name: Run ruff on changed files
+        uses: ChartBoost/ruff-action@v1
+        with:
+          files: |
+            $(cat repo/changed_files.txt)
