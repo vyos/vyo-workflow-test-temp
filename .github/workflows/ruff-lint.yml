@@ -36,5 +36,5 @@ jobs:
       - name: Lint
         uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
         with:
-          args: 'format --check'
+          args: check
           changed-files: 'true'
