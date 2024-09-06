@@ -22,11 +22,11 @@ jobs:
         with:
           python-version: '3.11'     
 
-      - name: Lint
-        uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
-        with:
-          args: check
-          changed-files: 'true'
+      # - name: Lint
+      #   uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
+      #   with:
+      #     args: check
+      #     changed-files: 'true'
 
       - uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
         with:
