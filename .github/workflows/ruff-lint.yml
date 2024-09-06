@@ -29,6 +29,7 @@ jobs:
           changed-files: 'true'
 
       - uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
+        if: always()
         with:
           args: format --diff
           changed-files: 'true'
