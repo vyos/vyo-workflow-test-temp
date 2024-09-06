@@ -10,25 +10,26 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - name: Checkout head
+      - name: Checkout Head
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'     
 
-      - name: Lint
+      - name: Ruff Check
         uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
         with:
           args: check
           changed-files: 'true'
 
-      - uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
+      - name: Ruff Format
+        uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
         if: always()
         with:
           args: format --diff
