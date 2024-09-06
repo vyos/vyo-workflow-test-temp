@@ -22,13 +22,13 @@ jobs:
         with:
           python-version: '3.11'     
 
-      # - name: Lint
-      #   uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
-      #   with:
-      #     args: check
-      #     changed-files: 'true'
+      - name: Lint
+        uses: chartboost/ruff-action@v1
+        with:
+          args: check
+          changed-files: 'true'
 
-      - uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
+      - uses: chartboost/ruff-action@v1
         with:
           args: format --diff
           changed-files: true
