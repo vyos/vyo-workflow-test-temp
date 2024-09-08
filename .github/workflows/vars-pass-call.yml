@@ -1,0 +1,10 @@
+name: VyOS var pass test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call_var_pass:
+    uses: vyos/.github/workflows/var-pass.yml@feature/test-var-passing
+    with:
+      NETLIFY_SITE_NAME: "abc.com"
