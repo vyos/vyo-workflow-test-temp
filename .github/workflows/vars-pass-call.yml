@@ -7,4 +7,4 @@ jobs:
   call_var_pass:
     uses: vyos/.github/.github/workflows/var-pass.yml@feature/test-var-passing
     with:
-      NETLIFY_SITE_NAME: "abc.com"
+      NETLIFY_SITE_NAME: ${{ vars.NETLIFY_SITE_NAME }}  
