@@ -17,7 +17,6 @@
 import sys
 import importlib.util
 import math
-import json
 import os
 
 def prepare_module(file_path='', module_name=''):
