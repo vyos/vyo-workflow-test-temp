@@ -17,14 +17,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
-      # - name: Get changed py files
-      #   id: changed-py-files
-      #   uses: tj-actions/changed-files@v44
-      #   with:
-      #     fetch_depth: 0
-      #     files: |
-      #        **.py
-
       - name: Filter changed Python files
         id: py-filter
         uses: dorny/paths-filter@v3
@@ -48,17 +40,3 @@ jobs:
           else
             echo "No Python files changed."
           fi
-
-      # - name: Ruff Check
-      #   if: steps.changed-py-files.outputs.any_changed == 'true'
-      #   uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
-      #   with:
-      #     args: check
-      #     changed-files: 'true'
-
-      # - name: Ruff Format
-      #   if: always() && steps.changed-py-files.outputs.any_changed == 'true'
-      #   uses: chartboost/ruff-action@491342200cdd1cf4d5132a30ddc546b3b5bc531b
-      #   with:
-      #     args: format --diff
-      #     changed-files: 'true'
