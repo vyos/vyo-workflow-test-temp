@@ -32,7 +32,7 @@ jobs:
 
       - name: Run ruff on changed files
         run: |
-          CHANGED_FILES=$(echo '${{ steps.py-filter.outputs.python_files }}' | jq -r '.[]')
+          CHANGED_FILES=$(echo '${{ steps.py-filter.outputs.python_files }}' | jq -r 'join(" ")')
           echo "CHANGED_FILES=$CHANGED_FILES"
           if [ -n "$CHANGED_FILES" ]; then
             ruff check --diff $CHANGED_FILES
