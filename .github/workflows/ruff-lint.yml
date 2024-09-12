@@ -36,15 +36,15 @@ jobs:
 
       - name: Install ruff 
         run: |
-          pip install ruff==0.0.47
+          pip install ruff==0.6.4
 
       - name: Run ruff on changed files
         run: |
           CHANGED_FILES=$(echo '${{ steps.py-filter.outputs.python_files }}' | jq -r '.[]')
           echo "CHANGED_FILES=$CHANGED_FILES"
           if [ -n "$CHANGED_FILES" ]; then
-            ruff check '$CHANGED_FILES' --diff
-            ruff format '$CHANGED_FILES' --diff
+            ruff check --diff '$CHANGED_FILES' 
+            ruff format --diff '$CHANGED_FILES'
           else
             echo "No Python files changed."
           fi
