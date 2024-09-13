@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from unittest import TestCase
-
+import os
 import vyos.opmode
 
 class TestVyOSOpMode(TestCase):
