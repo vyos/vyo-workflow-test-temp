@@ -17,6 +17,7 @@
 import unittest
 import vyos.configtree
 import vyos.initialsetup as vis
+import json
 
 from unittest import TestCase
 from vyos.xml_ref import definition
