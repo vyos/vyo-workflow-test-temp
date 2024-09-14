@@ -26,13 +26,6 @@ jobs:
             python:
               - '**/*.py'
 
-      # - name: Get py changed files
-      #   if: steps.py-filter.outputs.python == 'true'
-      #   id: py-changed-files
-      #   run: | 
-      #     files=$(echo '${{ steps.py-filter.outputs.python_files }}' | jq -r 'join(" ")')
-      #     echo "files=${files}" >> $GITHUB_OUTPUT
-
       - name: Install ruff 
         if: steps.py-filter.outputs.python == 'true'
         run: |
