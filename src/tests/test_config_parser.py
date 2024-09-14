@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import vyos.configtree
+import json
 
 from unittest import TestCase
 
