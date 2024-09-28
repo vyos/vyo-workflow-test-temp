@@ -5,6 +5,39 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ "current" ]
   workflow_dispatch:
+    inputs:
+      debian_mirror_url:
+        required: false
+        type: string
+        default: 'http://deb.debian.org/debian/'
+      debian_security_mirror_url:
+        required: false
+        type: string
+        default: ''
+      vyos_mirror_base_url:
+        required: false
+        type: string
+        default: 'https://packages.vyos.net/repositories'
+      arch:
+        required: false
+        type: string
+        default: amd64
+      build_by:
+        required: false
+        type: string
+        default: 'autobuild@vyos.net'
+      release_version:
+        required: true
+        type: string
+        default: '1.5.1'
+      release_flavor:
+        required: false
+        type: string
+        default: 'generic'
+      upload_bucket_url:
+        required: false
+        type: string
+        default: ''
 
 permissions:
   actions: read
@@ -16,4 +49,10 @@ jobs:
     uses: vyos/.github/.github/workflows/build-image.yml@feature/T6732-image-build-workflow
     secrets: inherit
     with:
-      release_version: "1.5.1"
+      debian_mirror_url: $${ inputs.debian_mirror_url }}
+      debian_security_mirror_url: $${ inputs.debian_security_mirror_url }}
+      vyos_mirror_base_url: $${ inputs.vyos_mirror_base_url }}
+      arch: $${ inputs.arch }}
+      build_by: $${ inputs.build_by }}
+      release_version: $${ inputs.release_version }}
+      release_flavor: $${ inputs.release_flavor }}
