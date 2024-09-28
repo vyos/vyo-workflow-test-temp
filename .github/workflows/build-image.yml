@@ -45,10 +45,10 @@ jobs:
     uses: vyos/.github/.github/workflows/build-image.yml@feature/T6732-image-build-workflow
     secrets: inherit
     with:
-      debian_mirror_url: $${ inputs.debian_mirror_url }}
-      debian_security_mirror_url: $${ inputs.debian_security_mirror_url }}
-      vyos_mirror_base_url: $${ inputs.vyos_mirror_base_url }}
-      arch: $${ inputs.arch }}
-      build_by: $${ inputs.build_by }}
-      release_version: $${ inputs.release_version }}
-      release_flavor: $${ inputs.release_flavor }}
+      debian_mirror_url: ${{ inputs.debian_mirror_url }}
+      debian_security_mirror_url: ${{ inputs.debian_security_mirror_url }}
+      vyos_mirror_base_url: ${{ inputs.vyos_mirror_base_url }}
+      arch: ${{ inputs.arch }}
+      build_by: ${{ inputs.build_by }}
+      release_version: ${{ inputs.release_version }}
+      release_flavor: ${{ inputs.release_flavor }}
