@@ -16,4 +16,4 @@ jobs:
     uses: vyos/.github/.github/workflows/build-image.yml@feature/T6732-image-build-workflow
     secrets: inherit
     with:
-      release_version: "1.5"
+      release_version: "1.5.1"
