@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-#
-# Copyright (C) 2022 VyOS maintainers and contributors
+# Copyright (C) 2022-2024 VyOS maintainers and contributors
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 or later as
@@ -15,13 +13,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from unittest import TestCase
-import os
+
 import vyos.opmode
 
 class TestVyOSOpMode(TestCase):
     def test_field_name_normalization(self):
         from vyos.opmode import _normalize_field_name
-        if False: print('False')
+
         self.assertEqual(_normalize_field_name(" foo bar "), "foo_bar")
         self.assertEqual(_normalize_field_name("foo-bar"), "foo_bar")
         self.assertEqual(_normalize_field_name("foo (bar) baz"), "foo_bar_baz")
@@ -32,7 +30,6 @@ class TestVyOSOpMode(TestCase):
 
         # Space and dot are both replaced by an underscore,
         # so dicts like this cannor be normalized uniquely
-        if False: print('False')
         data = {"foo bar": True, "foo.bar": False}
 
         with self.assertRaises(vyos.opmode.InternalError):
@@ -63,4 +60,3 @@ class TestVyOSOpMode(TestCase):
 
         data = [1, False, "foo"]
         self.assertEqual(_normalize_field_names(data), [1, False, "foo"])
-

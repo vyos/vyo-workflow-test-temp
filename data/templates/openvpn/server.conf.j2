@@ -11,11 +11,11 @@ dev-type {{ device_type }}
 dev {{ ifname }}
 persist-key
 {% if protocol is vyos_defined('tcp-active') %}
-proto tcp-client
+proto tcp{{ protocol_modifier }}-client
 {% elif protocol is vyos_defined('tcp-passive') %}
-proto tcp-server
+proto tcp{{ protocol_modifier }}-server
 {% else %}
-proto udp
+proto udp{{ protocol_modifier }}
 {% endif %}
 {% if local_host is vyos_defined %}
 local {{ local_host }}
@@ -63,6 +63,9 @@ nobind
 #
 # OpenVPN Server mode
 #
+{%     if ip_version is vyos_defined('ipv6') %}
+bind ipv6only
+{%     endif %}
 mode server
 tls-server
 {%     if server is vyos_defined %}
@@ -90,7 +93,9 @@ server-ipv6 {{ subnet }}
 {%                 endif %}
 {%             endfor %}
 {%         endif %}
-
+{%         if server.bridge is vyos_defined and server.bridge.disable is not vyos_defined %}
+server-bridge {{ server.bridge.gateway }} {{ server.bridge.subnet_mask }} {{ server.bridge.start }} {{ server.bridge.stop if server.bridge.stop is vyos_defined }}
+{%         endif %}
 {%         if server.client_ip_pool is vyos_defined and server.client_ip_pool.disable is not vyos_defined %}
 ifconfig-pool {{ server.client_ip_pool.start }} {{ server.client_ip_pool.stop }} {{ server.client_ip_pool.subnet_mask if server.client_ip_pool.subnet_mask is vyos_defined }}
 {%         endif %}
@@ -129,6 +134,9 @@ plugin "{{ plugin_dir }}/openvpn-otp.so" "otp_secrets=/config/auth/openvpn/{{ if
 #
 # OpenVPN site-2-site mode
 #
+{%     if ip_version is vyos_defined('ipv6') %}
+bind ipv6only
+{%     endif %}
 ping {{ keep_alive.interval }}
 ping-restart {{ keep_alive.failure_count }}
 
@@ -206,8 +214,8 @@ tls-server
 {%     if encryption.cipher is vyos_defined %}
 cipher {{ encryption.cipher | openvpn_cipher }}
 {%     endif %}
-{%     if encryption.ncp_ciphers is vyos_defined %}
-data-ciphers {{ encryption.ncp_ciphers | openvpn_ncp_ciphers }}
+{%     if encryption.data_ciphers is vyos_defined %}
+data-ciphers {{ encryption.data_ciphers | openvpn_data_ciphers }}
 {%     endif %}
 {% endif %}
 providers default

@@ -29,8 +29,11 @@
         "https": ["service_https"],
         "ipsec": ["vpn_ipsec"],
         "openconnect": ["vpn_openconnect"],
+        "reverse_proxy": ["load-balancing_reverse-proxy"],
         "rpki": ["protocols_rpki"],
-        "sstp": ["vpn_sstp"]
+        "sstp": ["vpn_sstp"],
+        "sstpc": ["interfaces_sstpc"],
+        "stunnel": ["service_stunnel"]
     },
     "vpn_ipsec": {
         "nhrp": ["protocols_nhrp"]
@@ -57,5 +60,18 @@
         "wireguard": ["interfaces_wireguard"],
         "wireless": ["interfaces_wireless"],
         "wwan": ["interfaces_wwan"]
+    },
+    "system_wireless": {
+        "wireless": ["interfaces_wireless"]
+    },
+    "system_ip": {
+        "sysctl": ["system_sysctl"]
+    },
+    "system_ipv6": {
+        "sysctl": ["system_sysctl"]
+    },
+    "system_option": {
+        "ip_ipv6": ["system_ip", "system_ipv6"],
+        "sysctl": ["system_sysctl"]
     }
 }

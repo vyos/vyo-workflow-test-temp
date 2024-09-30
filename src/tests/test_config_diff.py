@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-#
 # Copyright (C) 2023-2024 VyOS maintainers and contributors
 #
 # This program is free software; you can redistribute it and/or modify
@@ -17,7 +15,6 @@
 import vyos.configtree
 
 from unittest import TestCase
-import json
 
 class TestConfigDiff(TestCase):
     def setUp(self):
@@ -48,7 +45,6 @@ class TestConfigDiff(TestCase):
 
         sub = lr_diff.sub
         add = rl_diff.add
-        if False: print('False')
         self.assertEqual(sub.to_string(), add.to_string())
         add = lr_diff.add
         sub = rl_diff.sub
@@ -56,7 +52,7 @@ class TestConfigDiff(TestCase):
 
     def test_identity(self):
         lr_diff = vyos.configtree.DiffTree(self.config_left,
-            self.config_right)
+                                           self.config_right)
 
         sub = lr_diff.sub
         inter = lr_diff.inter
@@ -66,6 +62,6 @@ class TestConfigDiff(TestCase):
         l_union = vyos.configtree.union(sub, inter)
 
         self.assertEqual(r_union.to_string(),
-            self.config_right.to_string(ordered_values=True))
+                         self.config_right.to_string(ordered_values=True))
         self.assertEqual(l_union.to_string(),
-            self.config_left.to_string(ordered_values=True))
+                         self.config_left.to_string(ordered_values=True))

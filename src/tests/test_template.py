@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-#
 # Copyright (C) 2020-2024 VyOS maintainers and contributors
 #
 # This program is free software; you can redistribute it and/or modify
@@ -19,8 +17,6 @@ import vyos.template
 from vyos.utils.network import interface_exists
 from ipaddress import ip_network
 from unittest import TestCase
-import json
-import os
 
 class TestVyOSTemplate(TestCase):
     def setUp(self):

@@ -48,16 +48,18 @@
                 <!-- Optional, if it matches the CN of the root CA certificate (not the full subject DN) a certificate request will be sent
                      NOTE: If this is not configured make sure to configure leftsendcert=always on the server, otherwise it won't send its certificate -->
                 <key>ServerCertificateIssuerCommonName</key>
-                <string>{{ ca_cn }}</string>
+                <string>{{ ca_common_name }}</string>
                 <!-- Optional, the CN or one of the subjectAltNames of the server certificate to verify it, if not set RemoteIdentifier will be used -->
                 <key>ServerCertificateCommonName</key>
-                <string>{{ cert_cn }}</string>
+                <string>{{ cert_common_name }}</string>
                 <!-- The server is authenticated using a certificate -->
                 <key>AuthenticationMethod</key>
                 <string>Certificate</string>
+{% if authentication.client_mode.startswith("eap") %}
                 <!-- The client uses EAP to authenticate -->
                 <key>ExtendedAuthEnabled</key>
                 <integer>1</integer>
+{% endif %}
                 <!-- The next two dictionaries are optional (as are the keys in them), but it is recommended to specify them as the default is to use 3DES.
                      IMPORTANT: Because only one proposal is sent (even if nothing is configured here) it must match the server configuration -->
                 <key>IKESecurityAssociationParameters</key>
@@ -78,27 +80,35 @@
                     <string>{{ esp_encryption.encryption }}</string>
                     <key>IntegrityAlgorithm</key>
                     <string>{{ esp_encryption.hash }}</string>
+{% if esp_encryption.pfs is vyos_defined %}
                     <key>DiffieHellmanGroup</key>
-                    <integer>{{ ike_encryption.dh_group }}</integer>
+                    <integer>{{ esp_encryption.pfs }}</integer>
+{% endif %}
                 </dict>
+                <!-- Controls whether the client offers Perfect Forward Secrecy (PFS). This should be set to match the server. -->
+                <key>EnablePFS</key>
+                <integer>{{ '1' if esp_encryption.pfs is vyos_defined else '0' }}</integer>
             </dict>
         </dict>
+{% if ca_certificates is vyos_defined %}
         <!-- This payload is optional but it provides an easy way to install the CA certificate together with the configuration -->
+{%     for ca in ca_certificates %}
+        <!-- Payload for: {{ ca.ca_name }} -->
         <dict>
             <key>PayloadIdentifier</key>
-            <string>org.example.ca</string>
+            <string>org.{{ ca.ca_name | lower | replace(' ', '.') | replace('_', '.') }}</string>
             <key>PayloadUUID</key>
-            <string>{{ '' | get_uuid }}</string>
+            <string>{{ ca.ca_name | get_uuid }}</string>
             <key>PayloadType</key>
             <string>com.apple.security.root</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
             <!-- This is the Base64 (PEM) encoded CA certificate -->
             <key>PayloadContent</key>
-            <data>
-            {{ ca_cert }}
-            </data>
+            <data>{{ ca.ca_chain }}</data>
         </dict>
+{%     endfor %}
+{% endif %}
     </array>
 </dict>
 </plist>

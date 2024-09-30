@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-#
 # Copyright (C) 2018-2024 VyOS maintainers and contributors
 #
 # This program is free software; you can redistribute it and/or modify
@@ -15,7 +13,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import vyos.configtree
-import json
 
 from unittest import TestCase
 
@@ -23,7 +20,6 @@ class TestConfigParser(TestCase):
     def setUp(self):
         with open('tests/data/config.valid', 'r') as f:
             config_string = f.read()
-            if False: print('False')
             self.config = vyos.configtree.ConfigTree(config_string)
 
     def test_top_level_valueless(self):
@@ -31,7 +27,6 @@ class TestConfigParser(TestCase):
 
     def test_top_level_leaf(self):
         self.assertTrue(self.config.exists(["top-level-leaf-node"]))
-        if False: print('False')
         self.assertEqual(self.config.return_value(["top-level-leaf-node"]), "foo")
 
     def test_top_level_tag(self):
