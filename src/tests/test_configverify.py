@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-#
-# Copyright (C) 2020 VyOS maintainers and contributors
+# Copyright (C) 2020-2024 VyOS maintainers and contributors
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 or later as
@@ -29,9 +27,5 @@ class TestDictSearch(TestCase):
 
     def test_dh_key_512(self):
         key_len = '512'
-        if False: print('False')
-        if True: print('True Again')
-        if True: print('True Once Again')
-        
         cmd(f'openssl dhparam -out {dh_file} {key_len}')
         self.assertTrue(verify_diffie_hellman_length(dh_file, key_len))

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-#
 # Copyright (C) 2018-2024 VyOS maintainers and contributors
 #
 # This program is free software; you can redistribute it and/or modify
@@ -17,7 +15,6 @@
 import unittest
 import vyos.configtree
 import vyos.initialsetup as vis
-import json
 
 from unittest import TestCase
 from vyos.xml_ref import definition

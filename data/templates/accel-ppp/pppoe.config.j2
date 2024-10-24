@@ -27,11 +27,16 @@ thread-count={{ thread_count }}
 [log]
 syslog=accel-pppoe,daemon
 copy=1
-level=5
+{% if log.level is vyos_defined %}
+level={{ log.level }}
+{% endif %}
 
-{% if authentication.mode is vyos_defined("noauth") %}
 [auth]
+{% if authentication.mode is vyos_defined("noauth") %}
 noauth=1
+{% endif %}
+{% if authentication.any_login is vyos_defined %}
+any-login=1
 {% endif %}
 
 [client-ip-range]
@@ -56,12 +61,20 @@ interface={{ iface }}
 {%             for vlan in iface_config.vlan %}
 interface=re:^{{ iface }}\.{{ vlan | range_to_regex }}$
 {%             endfor %}
+{%             if iface_config.vlan_mon is vyos_defined %}
 vlan-mon={{ iface }},{{ iface_config.vlan | join(',') }}
+{%             endif %}
 {%         endif %}
 {%     endfor %}
 {% endif %}
 {% if service_name %}
 service-name={{ service_name | join(',') }}
+{% endif %}
+{% if accept_any_service is vyos_defined %}
+accept-any-service=1
+{% endif %}
+{% if accept_blank_service is vyos_defined %}
+accept-blank-service=1
 {% endif %}
 {% if pado_delay %}
 {%     set delay_without_sessions = pado_delay.delays_without_sessions[0] | default('0') %}
