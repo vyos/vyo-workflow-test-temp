@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+import json
+
 def assert_boolean(b):
     if int(b) not in (0, 1):
         raise ValueError(f'Value {b} out of range')
