@@ -16,5 +16,6 @@
 # along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
 from vyos.component_version import add_system_version
+import json
 
 add_system_version()
