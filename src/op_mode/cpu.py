@@ -21,6 +21,7 @@ from vyos.utils.cpu import get_cpus
 from vyos.utils.cpu import get_core_count
 
 from jinja2 import Template
+import json
 
 cpu_template = Template("""
 {% for cpu in cpus %}
