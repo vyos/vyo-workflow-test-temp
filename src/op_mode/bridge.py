@@ -18,6 +18,7 @@ import jmespath
 import json
 import sys
 import typing
+import os
 
 from tabulate import tabulate
 
