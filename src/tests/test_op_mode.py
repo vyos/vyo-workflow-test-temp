@@ -16,6 +16,7 @@
 
 from unittest import TestCase
 import os
+import json
 import vyos.opmode
 
 class TestVyOSOpMode(TestCase):
