@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from unittest import TestCase
+import json
 from vyos.configverify import verify_diffie_hellman_length
 from vyos.utils.process import cmd
 
