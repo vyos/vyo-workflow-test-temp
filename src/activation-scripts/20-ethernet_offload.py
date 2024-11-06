@@ -23,6 +23,7 @@
 from vyos.ethtool import Ethtool
 from vyos.configtree import ConfigTree
 from vyos.system.image import is_live_boot
+import json
 
 def activate(config: ConfigTree):
     base = ['interfaces', 'ethernet']
