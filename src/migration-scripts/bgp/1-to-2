@@ -18,6 +18,7 @@
 
 from vyos.configtree import ConfigTree
 import json
+import os
 
 base = ['protocols', 'bgp']
 
