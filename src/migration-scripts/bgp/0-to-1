@@ -16,7 +16,6 @@
 # T3417: migrate BGP tagNode to node as we can only have one BGP process
 
 from vyos.configtree import ConfigTree
-import json
 
 def migrate(config: ConfigTree) -> None:
     base = ['protocols', 'bgp']
