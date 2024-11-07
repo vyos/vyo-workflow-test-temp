@@ -16,6 +16,7 @@
 # Delete "set system conntrack modules gre" option
 
 from vyos.configtree import ConfigTree
+import json
 
 
 def migrate(config: ConfigTree) -> None:

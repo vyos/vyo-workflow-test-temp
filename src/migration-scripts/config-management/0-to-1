@@ -16,6 +16,7 @@
 # Add commit-revisions option if it doesn't exist
 
 from vyos.configtree import ConfigTree
+import json
 
 def migrate(config: ConfigTree) -> None:
     if config.exists(['system', 'config-management', 'commit-revisions']):

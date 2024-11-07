@@ -17,6 +17,8 @@
 # T5937: Migrate IPv6 BGP Neighbor Peer Groups
 
 from vyos.configtree import ConfigTree
+import json
+import os
 
 base = ['protocols', 'bgp']
 
